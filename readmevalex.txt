@@ -1,0 +1,1 @@
+GitLens — Git supercharged (gitkraken.com) -- надстройка для работы с git (можно и без нее)
