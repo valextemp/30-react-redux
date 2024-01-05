@@ -2,3 +2,4 @@ GitLens — Git supercharged (gitkraken.com) -- надстройка для ра
 
 - Redux Toolkit -- библиотека для создания Redux Store
 - React Redux -- для настройки взаимодействия компонентов React с Redux Store 
+- React-Toastify -- пакет для отображения ошибок в Web интерфейсе
