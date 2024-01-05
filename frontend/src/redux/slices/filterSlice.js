@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	title: "",
+	author: "",
 };
 
 const filterSlice = createSlice({
@@ -15,20 +16,24 @@ const filterSlice = createSlice({
 			// А можно как обычно возвращать новое состояние
 			// return { ...state, title: action.payload };//первый вариант
 		},
+		setAuthorFilter: (state, action) => {
+			state.author = action.payload;
+		},
 		resetFilters: (state) => {
 			return initialState;
 		},
 	},
 });
 
-console.log(filterSlice.actions);
+// console.log(filterSlice.actions);
 // console.log(filterSlice.actions.setTitleFilter('test'));
-console.log(filterSlice.actions.setTitleFilter);
+// console.log(filterSlice.actions.setTitleFilter);
 
 // export const setTitleFilter = filterSlice.actions.setTitleFilter();-- так не работает (наверно не функция)
 
 //то же самое
-export const { setTitleFilter,resetFilters } = filterSlice.actions;
+export const { setTitleFilter, setAuthorFilter, resetFilters } =
+	filterSlice.actions;
 
 //говорит надо так делать, чтобы не делать state.filter.title в компонентах, но что это за state непонятно
 export const selectTitleFilter = (state) => {
@@ -38,6 +43,8 @@ export const selectTitleFilter = (state) => {
 	// console.log("state.filter -- ", state.filter);
 	return state.filter.title;
 };
+
+export const selectAuthorFilter = (state) => state.filter.author;
 // console.log("selectTitleFilter --", selectTitleFilter);
 
 export default filterSlice.reducer;
