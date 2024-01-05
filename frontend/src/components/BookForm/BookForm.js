@@ -18,7 +18,7 @@ const BookForm = () => {
 
 		// const randomBookWithId = { ...randomBook, id: uuidv4(), isFavorite:false };
 
-		dispatch(addBook(createBookWithId(randomBook)));
+		dispatch(addBook(createBookWithId(randomBook, "random")));
 	};
 
 	const handleSubmit = (e) => {
@@ -26,7 +26,7 @@ const BookForm = () => {
 
 		if (title && author) {
 			//dispatch action
-			const book = createBookWithId({ title: title, author: author });
+			const book = createBookWithId({ title: title, author: author }, "manual");
 			// const book = {
 			// 	id: uuidv4(),
 			// 	title: title,
@@ -49,7 +49,7 @@ const BookForm = () => {
 			if (res?.data?.title && res?.data?.author) {
 				//можно и так
 				// console.log(res.data);
-				dispatch(addBook(createBookWithId(res.data)));
+				dispatch(addBook(createBookWithId(res.data, "API")));
 			}
 		} catch (error) {
 			console.log("Error fetching random book -- ", error);
