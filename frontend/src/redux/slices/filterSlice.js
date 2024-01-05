@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	title: "",
 	author: "",
+	onlyFavorite: false,
 };
 
 const filterSlice = createSlice({
@@ -19,7 +20,10 @@ const filterSlice = createSlice({
 		setAuthorFilter: (state, action) => {
 			state.author = action.payload;
 		},
-		resetFilters: (state) => {
+		setOnlyFavoriteFilter: (state) => {
+			state.onlyFavorite = !state.onlyFavorite;
+		},
+		resetFilters: () => {
 			return initialState;
 		},
 	},
@@ -32,8 +36,12 @@ const filterSlice = createSlice({
 // export const setTitleFilter = filterSlice.actions.setTitleFilter();-- так не работает (наверно не функция)
 
 //то же самое
-export const { setTitleFilter, setAuthorFilter, resetFilters } =
-	filterSlice.actions;
+export const {
+	setTitleFilter,
+	setAuthorFilter,
+	setOnlyFavoriteFilter,
+	resetFilters,
+} = filterSlice.actions;
 
 //говорит надо так делать, чтобы не делать state.filter.title в компонентах, но что это за state непонятно
 export const selectTitleFilter = (state) => {
@@ -45,6 +53,7 @@ export const selectTitleFilter = (state) => {
 };
 
 export const selectAuthorFilter = (state) => state.filter.author;
+export const selectOnlyFavoriteFilter = (state) => state.filter.onlyFavorite;
 // console.log("selectTitleFilter --", selectTitleFilter);
 
 export default filterSlice.reducer;
