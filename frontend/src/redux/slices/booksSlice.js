@@ -49,6 +49,13 @@ const booksSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
+		//вместо функции можно использовать объект, но у меня из-за двоеточиго не пошло, у него все норм
+		// [fetchBook.fulfilled] : (state, action) => {
+		// 	if (action.payload.title && action.payload.author) {
+		// 		state.push(createBookWithId(action.payload, "API")); //можно так если есть модуль Immer
+		// 	}
+		// };
+
 		builder.addCase(fetchBook.fulfilled, (state, action) => {
 			// console.log("extrareducers -- ", state, " -- ", action);
 			if (action.payload.title && action.payload.author) {
